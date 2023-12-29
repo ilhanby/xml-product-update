@@ -12,8 +12,8 @@
 1. Repository klonlayın
 2. `composer install` komutunu çalıştırın
 3. .env.example dosyasını kopyalayıp .env dosyasını oluşturun
-4. .env dosyasında veritabanı bilgilerinizi girin
-5. MySQL'de `CREATE DATABASE zzg_tect` komutunu çalıştırın
+4. MySQL'de `CREATE DATABASE zzg_tech` komutunu çalıştırın
+5. .env dosyasında veritabanı bilgilerinizi girin
 6. `php artisan migrate` komutunu çalıştırın
 7. .env dosyasında `PRODUCT_UPDATE_XML_URL` değişkenine xml dosyasının url'ini girin
 8. `php artisan xml:product-update` komutunu çalıştırın (xml dosyasındaki ürünler veritabanına kaydedilecektir)
