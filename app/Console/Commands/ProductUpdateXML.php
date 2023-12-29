@@ -58,6 +58,7 @@ class ProductUpdateXML extends Command
 
                     if (!is_null($productId) && $productPrice > 0 && $productQuantity > 0) {
 
+                        // Ürün veritabanında var mı diye kontrol edildi
                         $checkProduct = Product::find($productId);
 
                         if (!is_null($checkProduct)) {
@@ -105,8 +106,9 @@ class ProductUpdateXML extends Command
                         );
                     }
 
-                    if(count($products) > 5000) {
-                        // Toplu ekleme işlemi için kuyruğa al
+                    // Toplu ekleme işlemi için kuyruğa al (env dosyasından alınan değer kadar)
+                    if (count($products) > env('PRODUCT_QUEUE_COUNT', 1000)) {
+
                         dispatch(function () use ($products) {
                             Product::insert($products);
                             Log::info('Ürünler kuyruktan eklendi: ' . implode(', ', array_column($products, 'id')));
